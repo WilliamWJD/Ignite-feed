@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 export function Comment() {
     return (
         <div className={styles.comment}>
-            <img src="https://github.com/diego3g.png" alt="" />
+            <img src="https://github.com/williamwjd.png" alt="" />
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>
                     <header>

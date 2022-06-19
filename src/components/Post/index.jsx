@@ -8,8 +8,8 @@ export function Post() {
                 <div className={styles.author}>
                     <img className={styles.avatar} src="https://github.com/diego3g.png" alt="" />
                     <div className={styles.authorInfo}>
-                        <strong>William Dias</strong>
-                        <span>Backend Developer Java</span>
+                        <strong>Diego</strong>
+                        <span>Dev Frontend - React</span>
                     </div>
                 </div>
 
