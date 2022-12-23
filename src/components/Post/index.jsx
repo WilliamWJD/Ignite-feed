@@ -8,9 +8,7 @@ import { Comment } from '../Comment';
 import { Avatar } from '../Avatar';
 
 export function Post({ author, publishedAt, content }) {
-    const [comments, setComments] = useState([
-        'Post muito show, parabéns mano'
-    ]);
+    const [comments, setComments] = useState([]);
 
     const [newCommentText, setNewCommentText] = useState('');
 
@@ -29,9 +27,20 @@ export function Post({ author, publishedAt, content }) {
         setNewCommentText('');
     }
 
+    function handleNewCommentChange() {
+        event.target.setCustomValidity("");
+        setNewCommentText(event.target.value);
+    }
+
     function deleteComment(comment) {
         setComments(comments.filter(i => i !== comment));
     }
+
+    function handleNewCommentInvalid() {
+        event.target.setCustomValidity("Esse campo é obrigatório");
+    }
+
+    const isNewCommentEmpty = newCommentText.length === 0;
 
     return (
         <article className={styles.post}>
@@ -64,11 +73,13 @@ export function Post({ author, publishedAt, content }) {
                 <textarea
                     placeholder="Deixe um comentário"
                     name="comment"
-                    onChange={e => setNewCommentText(e.target.value)}
+                    onChange={handleNewCommentChange}
                     value={newCommentText}
+                    onInvalid={handleNewCommentInvalid}
+                    required
                 />
                 <footer>
-                    <button type="submit">Publicar</button>
+                    <button type="submit" disabled={isNewCommentEmpty}>Publicar</button>
                 </footer>
             </form>
 
